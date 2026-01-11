@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Hobby Organizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div id="auth-screen" class="overlay">
+        <div class="auth-box">
+            <h2>Find Your People.</h2>
+            <p>Войдите, чтобы увидеть события на карте</p>
+            <input type="text" id="username" placeholder="Имя пользователя">
+            <button onclick="login()">Войти или Создать аккаунт</button>
+        </div>
+    </div>
+
+    <div id="main-app" style="display:none;">
+        <header>
+            <h1>Hobby Map</h1>
+            <button onclick="logout()">Выйти</button>
+        </header>
+        
+        <div id="map"></div>
+
+        <div class="controls">
+            <h3>Создать событие</h3>
+            <p>Кликните на карту, чтобы выбрать место</p>
+            <input type="text" id="event-name" placeholder="Что будем делать?">
+            <input type="text" id="event-time" placeholder="Время (напр. 18:00)">
+            <button onclick="addMarker()">Разместить на карте</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
