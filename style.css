@@ -1,14 +1,83 @@
-body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(255,87,34,0.8), rgba(33,150,243,0.8));
-    display: flex; align-items: center; justify-content: center; z-index: 1000;
+:root {
+    --primary: #007bff;
+    --success: #28a745;
+    --dark: #333;
+    --bg: #f4f7f6;
 }
+
+body, html {
+    margin: 0; padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+}
+
+.screen {
+    display: flex; flex-direction: column;
+    align-items: center; min-height: 100vh;
+}
+
+/* Авторизация */
 .auth-box {
-    background: white; padding: 40px; border-radius: 15px; text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: white; padding: 40px;
+    border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-top: 15vh; text-align: center; width: 300px;
 }
-input { display: block; width: 250px; margin: 10px auto; padding: 10px; border-radius: 5px; border: 1px solid #ddd; }
-button { padding: 10px 20px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; }
-#map { height: 60vh; width: 100%; }
-.controls { padding: 20px; background: white; }
+
+/* Карта */
+#map {
+    height: 450px; width: 95%;
+    max-width: 900px; border-radius: 15px;
+    margin: 20px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Управление */
+.controls {
+    width: 95%; max-width: 900px;
+    display: flex; flex-direction: column; gap: 10px;
+}
+
+.input-group { display: flex; gap: 10px; }
+
+input, button {
+    padding: 12px; border-radius: 10px;
+    border: 1px solid #ddd; font-size: 16px;
+}
+
+button {
+    cursor: pointer; font-weight: 600; transition: 0.2s;
+}
+
+.btn-add { background: var(--primary); color: white; border: none; }
+.btn-exit { background: #eee; color: var(--dark); border: none; padding: 5px 15px; }
+
+/* Карточки событий */
+.event-card {
+    background: white; padding: 15px;
+    margin: 10px 0; border-radius: 12px;
+    border-left: 6px solid var(--primary);
+    width: 95%; max-width: 900px;
+}
+
+/* Уведомления (Toasts) */
+.toast-container {
+    position: fixed; top: 20px; right: 20px; z-index: 10000;
+}
+
+.toast {
+    background: var(--dark); color: white;
+    padding: 15px 25px; border-radius: 10px;
+    margin-bottom: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Кнопка внутри карты */
+.popup-btn {
+    background: var(--success); color: white;
+    border: none; padding: 8px; border-radius: 6px;
+    width: 100%; margin-top: 10px;
+}
